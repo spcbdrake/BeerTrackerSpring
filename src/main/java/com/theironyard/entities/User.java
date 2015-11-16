@@ -1,4 +1,6 @@
-package com.theironyard;
+package com.theironyard.entities;
+
+import com.theironyard.entities.Beer;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,12 +13,16 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    Integer id;
+    @Column(nullable = false)
+    int id;
 
-    String name;
-    String password;
+    @Column(nullable = false)
+    public String name;
+
+    @Column(nullable = false)
+    public String password;
 
 
     @OneToMany(mappedBy = "user") //the name of the field in the Beer class
-    List<Beer> beers;
+    public List<Beer> beers;
 }

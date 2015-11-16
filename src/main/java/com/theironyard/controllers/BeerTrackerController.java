@@ -1,5 +1,10 @@
-package com.theironyard;
+package com.theironyard.controllers;
 
+import com.theironyard.entities.Beer;
+import com.theironyard.entities.User;
+import com.theironyard.services.BeerRepository;
+import com.theironyard.services.UserRepository;
+import com.theironyard.util.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,7 +86,7 @@ public class BeerTrackerController {
 
     @RequestMapping("/edit-beer")
     public String editBeer(Integer id, String name, String type, HttpSession session) throws Exception {
-        if (session.getAttribute("username" == null)) {
+        if (session.getAttribute("username") == null) {
             throw new Exception("Not logged in");
         }
         Beer beer = beers.findOne(id);
